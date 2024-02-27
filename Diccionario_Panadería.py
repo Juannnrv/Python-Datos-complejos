@@ -75,13 +75,24 @@ if 1 <= datosCategoria <= len(opcionCategoria):
     print ()
 
     
-    producto_seleccionado = int(input("Por favor, selecciona el número del producto en el que estás interesad@ => "))
+    producto_seleccionado = int(input("Por favor, selecciona el número asignado al producto en el que estás interesad@ => "))
+    print ()
 
     
     if 1 <= producto_seleccionado <= len(productosCategoriaSeleccionada):
         producto_seleccionado = list(productosCategoriaSeleccionada.keys())[producto_seleccionado - 1]
         precio_producto = productosCategoriaSeleccionada.get(producto_seleccionado)
-        print(f"Has seleccionado el producto: {producto_seleccionado} con un valor de ${precio_producto}")
+        total = precio_producto * producto_seleccionado
+        print(f"Has seleccionado el producto: {producto_seleccionado}")
+        print ()
+
+    productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
+    print ()
+
+    if 1 <= productos_seleccionados:
+        total = precio_producto * productos_seleccionados
+        print(f"Has seleccionado el producto: {producto_seleccionado} con un valor de ${total}")
+
     else:
         print("Opción no válida. Por favor, selecciona un número de producto válido.")
 else:
