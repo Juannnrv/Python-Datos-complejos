@@ -48,16 +48,24 @@ menu_panaderia = {
 
 print("Bienvenido a la panadería. Este es nuestro menú:")
 for categoria, datos_categoria in menu_panaderia.items():
-    print(f"\n--- {categoria} ---")
-    for producto, precio in datos_categoria["Productos"].items():
-        print(f"{producto}: ${precio:.2f}")
-        
-print("\n--- Promociones ---")
-for categoria, datos_categoria in menu_panaderia.items():
-    promocion = datos_categoria["Promoción"]
-    print(f"{categoria}: {promocion}")
+    print(f"--- {categoria} ---")
+    for i, (producto, precio) in enumerate(datos_categoria["Productos"].items(), 1):
+        print(f"{i}. {producto}: ${precio}")
+    print(f"Promoción: {datos_categoria['Promoción']}")
+    print()
 
+print("¿Que categoría te interesa?")
+listCategoria = list(menu_panaderia.keys())
+for i,val in enumerate(listCategoria):
+    print(f"{i+1}. {val}")
+opcionCategoria = int(input("Por favor, selecciona la categoria en la que estas intersad@ => "))-1
+datosCategoria = menu_panaderia.get(listCategoria[opcionCategoria])
+productosCategoria = datos_categoria["Productos"]
+print()
 
-
-
+print("Ok, ahora es momento de elegir el producto")
+opcionCategoria = list(productosCategoria.keys())
+for i,val in enumerate(opcionCategoria):
+    print(f"{i+1}. {val}")
+datosCategoria = int(input("Por favor, selecciona el producto en el que estas intersad@ => "))-1
 
