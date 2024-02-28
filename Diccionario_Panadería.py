@@ -104,7 +104,7 @@ if 1 <= datosCategoria <= len(opcionCategoria):
             if 1 <= productos_seleccionados:
                 total = precio_producto * productos_seleccionados
                 print(f"Total a pagar por {productos_seleccionados} {producto_seleccionado}: ${total}")
-                cantidad_pagada = float(input("Por favor, ingresa la cantidad con la que pagarás => "))
+                cantidad_pagada = int(input("Por favor, ingresa la cantidad con la que pagarás => "))
                 if cantidad_pagada < total:
                     print("La cantidad ingresada es insuficiente. Por favor, ingresa una cantidad válida.")
                 else:
@@ -116,9 +116,3 @@ if 1 <= datosCategoria <= len(opcionCategoria):
         print("Opción no válida. Por favor, selecciona un número de producto o promoción válido.")
 else:
     print("Opción no válida. Por favor, selecciona un número de categoría válido.")
-
-
-     
-
-
-
