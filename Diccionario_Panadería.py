@@ -1,10 +1,5 @@
-bienvenida = input("Bienvenido, ¿deseas conocer nuestro menú? Si/No => ")
-if bienvenida == "Si":
-    print ("¡Muchas gracias por preferirnos!")
-else:
-    print ("Gracias por visitarnos! ¡Esperamos verte pronto!")
+print ("---BIENVENID@---")
 print ()
-
 menu_panaderia = {
     "Panadería": {
         "Productos": {
@@ -101,8 +96,8 @@ if 1 <= datosCategoria <= len(opcionCategoria):
             print ()
 
             if 1 <= productos_seleccionados:
-                total *= productos_seleccionados
-                print(f"Has seleccionado el producto: {producto_seleccionado} con un valor de ${total}")
+                total = precio_producto * productos_seleccionados
+                print(f"Has seleccionado el producto: {productos_seleccionados} con un valor de ${total}")
                 print ()
 
             else:
