@@ -84,13 +84,8 @@ if 1 <= datosCategoria <= len(opcionCategoria):
         producto_seleccionado = list(productosCategoriaSeleccionada.keys())[producto_seleccionado - 1]
         precio_producto = productosCategoriaSeleccionada.get(producto_seleccionado)
 
-        # Si es una promoción, calcula el total según los términos de la promoción
         if producto_seleccionado.startswith("Promoción"):
-            cantidad_a_pagar = 1
-            cantidad_gratis = 2
-            precio_promocion = 2000  # Precio de la promoción
-            total = (cantidad_a_pagar + cantidad_gratis) * precio_promocion
-            print(f"Has seleccionado la promoción: {producto_seleccionado}. Debes pagar ${total}")
+            print(f"Has seleccionado la promoción: {producto_seleccionado}. Debes pagar ${precio}")
         else:
             print("Has seleccionado el producto:", producto_seleccionado)
             productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
