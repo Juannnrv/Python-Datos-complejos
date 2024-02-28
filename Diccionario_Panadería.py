@@ -62,7 +62,6 @@ for categoria, datos_categoria in menu_panaderia.items():
     print(f"--- {categoria} ---")
     for i, (producto, precio) in enumerate(datos_categoria["Productos"].items(), 1):
         print(f"{i}. {producto}: ${precio}")
-    print(f"Promoción: {datos_categoria}")
     print()
 
 print("Afortunadamente contamos con 3 excelentes categorías en las que puedas elegir tu plato o bebida prefererida: ")
@@ -92,27 +91,31 @@ if 1 <= datosCategoria <= len(opcionCategoria):
         total = precio_producto * producto_seleccionado
         print(f"Has seleccionado el producto: {producto_seleccionado}")
         print ()
-
-    if producto_seleccionado == 11:  
-        cantidad_a_pagar = 1
-        cantidad_gratis = 2
-        precio_producto = 2000  
-        total = (cantidad_a_pagar + cantidad_gratis) * precio_producto
-        print(f"Has seleccionado la promoción 'Pague 1 cupcake y lleve 2'. Total a pagar: ${total}")
-        print ()
-        
     
-    productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
-    print ()
+        if producto_seleccionado.startswith("Promoción"):
+            print(f"Has seleccionado la promoción: {producto_seleccionado}. Total a pagar: ${total}")
+            print ()
+         
+        else:
+            productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
+            print ()
 
-    if 1 <= productos_seleccionados:
-        total = precio_producto * productos_seleccionados
-        print(f"Has seleccionado el producto: {producto_seleccionado} con un valor de ${total}")
+            if 1 <= productos_seleccionados:
+                total *= productos_seleccionados
+                print(f"Has seleccionado el producto: {producto_seleccionado} con un valor de ${total}")
+                print ()
+
+            else:
+                print("Opción no válida. Por favor, selecciona un número de producto válido.")
 
     else:
-        print("Opción no válida. Por favor, selecciona un número de producto válido.")
+        print("Opción no válida. Por favor, selecciona un número de producto o promoción válido.")
+
 else:
-    print("Opción no válida. Por favor, selecciona un número de categoría válido.")
+     print("Opción no válida. Por favor, selecciona un número de categoría válido.")
+
+
+     
 
 
 
