@@ -1,5 +1,6 @@
-print ("---BIENVENID@---")
-print ()
+print("---BIENVENID@---")
+print()
+
 menu_panaderia = {
     "Panadería": {
         "Productos": {
@@ -15,7 +16,6 @@ menu_panaderia = {
             "Eclairs": 2000,
             "Promoción del dia compra 2 panes blancos y el tercero llevatelo a mitad de precio": 5000
         },
-        
     },
     "Pasteles": {
         "Productos": {
@@ -31,7 +31,6 @@ menu_panaderia = {
             "Magdalenas": 1200,
             "Promoción de Sabatina paga 1 cupcake y lleva 2": 2000
         },
-        
     },
     "Bebidas": {
         "Productos": {
@@ -45,57 +44,56 @@ menu_panaderia = {
             "Café con leche": 2000,
             "Chocolate caliente": 2500,
             "Limonada": 2200,
-            "Promoción de fin de semana batido de frutas a mitad de precio" : 1500
+            "Promoción de fin de semana batido de frutas a mitad de precio": 1500
         },
-        
     }
 }
 
 print("ESTE ES NUESTRO MENÚ:")
-print ()
+print()
 for categoria, datos_categoria in menu_panaderia.items():
     print(f"--- {categoria} ---")
     for i, (producto, precio) in enumerate(datos_categoria["Productos"].items(), 1):
         print(f"{i}. {producto}: ${precio}")
     print()
 
-print("Afortunadamente contamos con 3 excelentes categorías en las que puedas elegir tu plato o bebida prefererida: ")
-print ()
+print("Afortunadamente contamos con 3 excelentes categorías en las que puedas elegir tu plato o bebida preferida: ")
+print()
 
 opcionCategoria = list(menu_panaderia.keys())  
 for i, val in enumerate(opcionCategoria, 1): 
     print(f"{i}. {val}")
-print ()
+print()
 
-datosCategoria = (input("Por favor, selecciona el número de la categoría del producto en la que estás interesad@ => "))
+datosCategoria = input("Por favor, selecciona el número de la categoría del producto en la que estás interesad@ => ")
 if datosCategoria.isdigit():
     datosCategoria = int(datosCategoria)
 else:
     print("Entrada inválida. Por favor, ingresa un número válido.")
-print ()
+    exit()
 
 if 1 <= datosCategoria <= len(opcionCategoria):
     categoria_seleccionada = opcionCategoria[datosCategoria - 1]
     productosCategoriaSeleccionada = menu_panaderia[categoria_seleccionada]["Productos"]
     for i, (producto, precio) in enumerate(productosCategoriaSeleccionada.items(), 1):  
         print(f"{i}. {producto}: ${precio}")
-    print ()
+    print()
 
     producto_seleccionado = int(input("Por favor, selecciona el número asignado al producto o la promoción en la que estás interesad@ => "))
-    print ()
+    print()
 
     if 1 <= producto_seleccionado <= len(productosCategoriaSeleccionada):
         producto_seleccionado = list(productosCategoriaSeleccionada.keys())[producto_seleccionado - 1]
         precio_producto = productosCategoriaSeleccionada.get(producto_seleccionado)
 
         if producto_seleccionado.startswith("Promoción"):
-            print(f"Has seleccionado la promoción: {producto_seleccionado}. Debes pagar ${precio}")
+            print(f"Has seleccionado la promoción: {producto_seleccionado}. Debes pagar ${precio_producto}")
             cantidad_pagada = int(input("Por favor, ingresa la cantidad con la que pagarás => "))
-            if cantidad_pagada < precio:
-                    print("La cantidad ingresada es insuficiente. Por favor, ingresa una cantidad válida.")
+            if cantidad_pagada < precio_producto:
+                print("La cantidad ingresada es insuficiente. Por favor, ingresa una cantidad válida.")
             else:
-                    vuelto = cantidad_pagada - precio
-                    print(f"Gracias por tu compra. Tu vuelto es de ${vuelto}")
+                vuelto = cantidad_pagada - precio_producto
+                print(f"Gracias por tu compra. Tu vuelto es de ${vuelto}")
         else:
             print("Has seleccionado el producto:", producto_seleccionado)
             productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
@@ -105,6 +103,7 @@ if 1 <= datosCategoria <= len(opcionCategoria):
                 total = precio_producto * productos_seleccionados
                 print(f"Total a pagar por {productos_seleccionados} {producto_seleccionado}: ${total}")
                 cantidad_pagada = int(input("Por favor, ingresa la cantidad con la que pagarás => "))
+                print ()
                 if cantidad_pagada < total:
                     print("La cantidad ingresada es insuficiente. Por favor, ingresa una cantidad válida.")
                 else:
