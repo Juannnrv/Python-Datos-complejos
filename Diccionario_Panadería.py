@@ -83,31 +83,28 @@ if 1 <= datosCategoria <= len(opcionCategoria):
     if 1 <= producto_seleccionado <= len(productosCategoriaSeleccionada):
         producto_seleccionado = list(productosCategoriaSeleccionada.keys())[producto_seleccionado - 1]
         precio_producto = productosCategoriaSeleccionada.get(producto_seleccionado)
-        total = precio_producto * producto_seleccionado
-        print(f"Has seleccionado el producto: {producto_seleccionado}")
-        print ()
-    
+
+        # Si es una promoción, calcula el total según los términos de la promoción
         if producto_seleccionado.startswith("Promoción"):
-            print(f"Has seleccionado la promoción: {producto_seleccionado}. Total a pagar: ${total}")
-            print ()
-         
+            cantidad_a_pagar = 1
+            cantidad_gratis = 2
+            precio_promocion = 2000  # Precio de la promoción
+            total = (cantidad_a_pagar + cantidad_gratis) * precio_promocion
+            print(f"Has seleccionado la promoción: {producto_seleccionado}. Debes pagar ${total}")
         else:
+            print("Has seleccionado el producto:", producto_seleccionado)
             productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
-            print ()
+            print()
 
             if 1 <= productos_seleccionados:
                 total = precio_producto * productos_seleccionados
-                print(f"Has seleccionado el producto: {productos_seleccionados} con un valor de ${total}")
-                print ()
-
+                print(f"Total a pagar por {productos_seleccionados} {producto_seleccionado}: ${total}")
             else:
                 print("Opción no válida. Por favor, selecciona un número de producto válido.")
-
     else:
         print("Opción no válida. Por favor, selecciona un número de producto o promoción válido.")
-
 else:
-     print("Opción no válida. Por favor, selecciona un número de categoría válido.")
+    print("Opción no válida. Por favor, selecciona un número de categoría válido.")
 
 
      
