@@ -67,7 +67,11 @@ for i, val in enumerate(opcionCategoria, 1):
     print(f"{i}. {val}")
 print ()
 
-datosCategoria = int(input("Por favor, selecciona el número de la categoría del producto en la que estás interesad@ => "))
+datosCategoria = (input("Por favor, selecciona el número de la categoría del producto en la que estás interesad@ => "))
+if datosCategoria.isdigit():
+    datosCategoria = int(datosCategoria)
+else:
+    print("Entrada inválida. Por favor, ingresa un número válido.")
 print ()
 
 if 1 <= datosCategoria <= len(opcionCategoria):
@@ -86,6 +90,12 @@ if 1 <= datosCategoria <= len(opcionCategoria):
 
         if producto_seleccionado.startswith("Promoción"):
             print(f"Has seleccionado la promoción: {producto_seleccionado}. Debes pagar ${precio}")
+            cantidad_pagada = int(input("Por favor, ingresa la cantidad con la que pagarás => "))
+            if cantidad_pagada < precio:
+                    print("La cantidad ingresada es insuficiente. Por favor, ingresa una cantidad válida.")
+            else:
+                    vuelto = cantidad_pagada - precio
+                    print(f"Gracias por tu compra. Tu vuelto es de ${vuelto}")
         else:
             print("Has seleccionado el producto:", producto_seleccionado)
             productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
@@ -94,6 +104,12 @@ if 1 <= datosCategoria <= len(opcionCategoria):
             if 1 <= productos_seleccionados:
                 total = precio_producto * productos_seleccionados
                 print(f"Total a pagar por {productos_seleccionados} {producto_seleccionado}: ${total}")
+                cantidad_pagada = float(input("Por favor, ingresa la cantidad con la que pagarás => "))
+                if cantidad_pagada < total:
+                    print("La cantidad ingresada es insuficiente. Por favor, ingresa una cantidad válida.")
+                else:
+                    vuelto = cantidad_pagada - total
+                    print(f"Gracias por tu compra. Tu vuelto es de ${vuelto}")
             else:
                 print("Opción no válida. Por favor, selecciona un número de producto válido.")
     else:
