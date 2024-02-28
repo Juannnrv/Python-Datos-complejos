@@ -1,7 +1,14 @@
+bienvenida = input("Bienvenido, ¿deseas conocer nuestro menú? Si/No => ")
+if bienvenida == "Si":
+    print ("¡Muchas gracias por preferirnos!")
+else:
+    print ("Gracias por visitarnos! ¡Esperamos verte pronto!")
+print ()
+
 menu_panaderia = {
     "Panadería": {
         "Productos": {
-            "Pan blanco": 2500,
+            "Pan blanco": 2000,
             "Pan integral": 3000,
             "Croissant": 1800,
             "Bollos de canela": 2200,
@@ -10,9 +17,10 @@ menu_panaderia = {
             "Baguette": 2800,
             "Pan de centeno": 3500,
             "Panecillos de leche": 1200,
-            "Eclairs": 2000
+            "Eclairs": 2000,
+            "Promoción del dia compra 2 panes blancos y el tercero llevatelo a mitad de precio": 5000
         },
-        "Promoción": "¡Compra 3 panes y llévate una rosquilla gratis!"
+        
     },
     "Pasteles": {
         "Productos": {
@@ -25,9 +33,10 @@ menu_panaderia = {
             "Galletas decoradas": 1500,
             "Rollitos de canela": 2500,
             "Brownies": 2500,
-            "Magdalenas": 1200
+            "Magdalenas": 1200,
+            "Promoción de Sabatina paga 1 cupcake y lleva 2": 2000
         },
-        "Promoción": "¡Paga 1 cupcake y lleva 2!"
+        
     },
     "Bebidas": {
         "Productos": {
@@ -40,45 +49,43 @@ menu_panaderia = {
             "Cerveza artesanal": 3500,
             "Café con leche": 2000,
             "Chocolate caliente": 2500,
-            "Limonada": 2200
+            "Limonada": 2200,
+            "Promoción de fin de semana batido de frutas a mitad de precio" : 1500
         },
-        "Promoción": "¡Batido de frutas a mitad de precio!"
+        
     }
 }
 
-print("Bienvenido a la panadería. Este es nuestro menú:")
+print("ESTE ES NUESTRO MENÚ:")
+print ()
 for categoria, datos_categoria in menu_panaderia.items():
     print(f"--- {categoria} ---")
     for i, (producto, precio) in enumerate(datos_categoria["Productos"].items(), 1):
         print(f"{i}. {producto}: ${precio}")
-    print(f"Promoción: {datos_categoria['Promoción']}")
+    print(f"Promoción: {datos_categoria}")
     print()
 
+print("Afortunadamente contamos con 3 excelentes categorías en las que puedas elegir tu plato o bebida prefererida: ")
+print ()
 
 opcionCategoria = list(menu_panaderia.keys())  
 for i, val in enumerate(opcionCategoria, 1): 
     print(f"{i}. {val}")
 print ()
 
-
 datosCategoria = int(input("Por favor, selecciona el número de la categoría del producto en la que estás interesad@ => "))
 print ()
 
 if 1 <= datosCategoria <= len(opcionCategoria):
-    
     categoria_seleccionada = opcionCategoria[datosCategoria - 1]
-
-    
     productosCategoriaSeleccionada = menu_panaderia[categoria_seleccionada]["Productos"]
     for i, (producto, precio) in enumerate(productosCategoriaSeleccionada.items(), 1):  
         print(f"{i}. {producto}: ${precio}")
     print ()
 
-    
-    producto_seleccionado = int(input("Por favor, selecciona el número asignado al producto en el que estás interesad@ => "))
+    producto_seleccionado = int(input("Por favor, selecciona el número asignado al producto o la promoción en la que estás interesad@ => "))
     print ()
 
-    
     if 1 <= producto_seleccionado <= len(productosCategoriaSeleccionada):
         producto_seleccionado = list(productosCategoriaSeleccionada.keys())[producto_seleccionado - 1]
         precio_producto = productosCategoriaSeleccionada.get(producto_seleccionado)
@@ -86,6 +93,15 @@ if 1 <= datosCategoria <= len(opcionCategoria):
         print(f"Has seleccionado el producto: {producto_seleccionado}")
         print ()
 
+    if producto_seleccionado == 11:  
+        cantidad_a_pagar = 1
+        cantidad_gratis = 2
+        precio_producto = 2000  
+        total = (cantidad_a_pagar + cantidad_gratis) * precio_producto
+        print(f"Has seleccionado la promoción 'Pague 1 cupcake y lleve 2'. Total a pagar: ${total}")
+        print ()
+        
+    
     productos_seleccionados = int(input("Por favor, selecciona la cantidad que deseas comprar => "))
     print ()
 
