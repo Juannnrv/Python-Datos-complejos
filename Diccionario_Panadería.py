@@ -1,3 +1,4 @@
+print()
 print("---BIENVENID@---")
 print()
 
@@ -14,6 +15,7 @@ menu_panaderia = {
             "Pan de centeno": 3500,
             "Panecillos de leche": 1200,
             "Eclairs": 2000,
+            "Promoción Sabatina paga 1 Croissant y lleva 2": 1800,
             "Promoción del dia compra 2 panes blancos y el tercero llevatelo a mitad de precio": 5000
         },
     },
@@ -29,7 +31,8 @@ menu_panaderia = {
             "Rollitos de canela": 2500,
             "Brownies": 2500,
             "Magdalenas": 1200,
-            "Promoción de Sabatina paga 1 cupcake y lleva 2": 2000
+            "Promoción de fin de semana tarta de manzana a mitad de precio": 7500,
+            "Promoción Sabatina paga 1 cupcake y lleva 2": 2000
         },
     },
     "Bebidas": {
@@ -44,18 +47,11 @@ menu_panaderia = {
             "Café con leche": 2000,
             "Chocolate caliente": 2500,
             "Limonada": 2200,
+            "Promoción Sabatina paga 1 limonada y lleva 2": 2200,
             "Promoción de fin de semana batido de frutas a mitad de precio": 1500
         },
     }
 }
-
-print("ESTE ES NUESTRO MENÚ:")
-print()
-for categoria, datos_categoria in menu_panaderia.items():
-    print(f"--- {categoria} ---")
-    for i, (producto, precio) in enumerate(datos_categoria["Productos"].items(), 1):
-        print(f"{i}. {producto}: ${precio}")
-    print()
 
 print("Afortunadamente contamos con 3 excelentes categorías en las que puedas elegir tu plato o bebida preferida: ")
 print()
